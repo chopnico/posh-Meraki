@@ -27,9 +27,27 @@ function Get-MerakiDevices {
     )
 
     Try{
-        Invoke-WebRequest -Uri "$env:ApiBaseUrl/networks/$NetworkId/devices" -Headers @{ 'X-Cisco-Meraki-API-Key' = $ApiKey } | ConvertFrom-Json
+        $response = Invoke-RestMethod `
+            -Uri "$env:ApiBaseUrl/networks/$NetworkId/devices" `
+            -Method Get `
+            -ContentType "application/json" `
+            -Headers @{ 'X-Cisco-Meraki-API-Key' = $ApiKey }
+
+        $response | ForEach-Object {
+            $device = [Device]@{
+                Name       = $_.name
+                Serial     = $_.serial
+                Mac        = $_.mac
+                Model      = $_.model
+                LanIp      = $_.lanIp
+                NetworkId  = $_.networkId
+                Tags       = $_.tags
+            }
+
+            Write-Output $device
+        }
     }
     Catch{
-        Write-Error $_.Exception.Message
+        Write-Error $_.Exception
     }
 }
