@@ -4,6 +4,6 @@ class DeviceUplink {
     [string]$Ip
     [string]$Gateway
     [string]$PublicIp
-    [string]$Dns
+    [array]$Dns
     [bool]$UsingStaticIp
 }

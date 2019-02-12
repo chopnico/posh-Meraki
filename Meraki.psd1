@@ -69,6 +69,7 @@ ScriptsToProcess = @('./Initialize.ps1')
 NestedModules = @(
     './Modules/Get-MerakiDevices.psm1',
     './Modules/Get-MerakiDevice.psm1',
+    './Modules/Get-MerakiDeviceUplink.psm1',
     './Modules/Get-MerakiNetworks.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
