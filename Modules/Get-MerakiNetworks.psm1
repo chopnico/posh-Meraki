@@ -22,6 +22,6 @@ function Get-MerakiNetworks {
         Invoke-WebRequest -Uri "$env:ApiBaseUrl/organizations/$OrganizationId/networks" -Headers @{ 'X-Cisco-Meraki-API-Key' = $ApiKey } | ConvertFrom-Json
     }
     Catch{
-        Write-Error $_.Exception.Message
+        Write-Error $_.Exception
     }
 }

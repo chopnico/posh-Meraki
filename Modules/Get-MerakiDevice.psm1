@@ -56,6 +56,6 @@ function Get-MerakiDevice {
         }
     } 
     Catch{
-        Write-Error $_.Exception.Message
+        Write-Error $_.Exception
     }
 }
