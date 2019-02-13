@@ -1,8 +1,7 @@
 ---
-name: powershell-meraki
+trigger:
+  - master
+
 resources:
-  repositories:
-    - repository: powershell-meraki
-      type: git
-      name: powershell-meraki
+  - repo: self
 ...
