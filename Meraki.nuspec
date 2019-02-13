@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package >
+<metadata>
+  <id>Meraki</id>
+  <version>0.0.1</version>
+  <authors>Wes Key</authors>
+  <owners>IGS</owners>
+  <requireLicenseAcceptance>false</requireLicenseAcceptance>
+  <description>A module for interacting with the Meraki Dashboard</description>
+  <releaseNotes>Hold on to your butt</releaseNotes>
+  <copyright>Copyright 2019</copyright>
+</metadata>
+</package>
