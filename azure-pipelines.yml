@@ -1,6 +1,8 @@
 ---
-  resources:
-    repositories:
-      - repository: powershell-meraki
-        type: git
+name: powershell-meraki
+resources:
+  repositories:
+    - repository: powershell-meraki
+      type: git
+      name: powershell-meraki
 ...
