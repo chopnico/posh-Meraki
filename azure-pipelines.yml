@@ -1,5 +1,4 @@
 ---
-- name: Publish powershell-meraki
   resources:
     repositories:
       - repository: powershell-meraki
