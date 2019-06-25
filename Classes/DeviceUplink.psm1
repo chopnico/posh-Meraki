@@ -1,4 +1,5 @@
 class DeviceUplink {
+    [string]$DeviceName
     [string]$Interface
     [string]$Status
     [string]$Ip

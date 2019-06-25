@@ -1,4 +1,4 @@
-function Get-MerakiDeviceUplink {
+function Get-MerakiVlans {
     [CmdletBinding()]
     param (
         [Parameter(
@@ -23,36 +23,25 @@ function Get-MerakiDeviceUplink {
             ValueFromPipeLine = $false,
             ValueFromPipelineByPropertyName = $false)]
         [string]
-        $NetworkId,
-
-        [Parameter(
-            Position = 3,
-            Mandatory = $true,
-            ValueFromPipeLine = $false,
-            ValueFromPipelineByPropertyName = $false)]
-        [string]
-        $Serial
+        $NetworkId
     )
 
     Try{
         $response = Invoke-RestMethod `
-            -Uri "$env:ApiBaseUrl/networks/$NetworkId/devices/$Serial/uplink" `
+            -Uri "$env:ApiBaseUrl/networks/$NetworkId/vlans" `
             -Method Get `
             -ContentType "application/json" `
             -Headers @{ 'X-Cisco-Meraki-API-Key' = $ApiKey }
 
         $response | ForEach-Object {
-            $deviceUplink = [DeviceUplink]@{
-                Interface       = $_.interface
-                Status          = $_.status
-                Ip              = $_.ip
-                Gateway         = $_.gateway
-                PublicIp        = $_.publicIp
-                Dns             = $_.dns -split ","
-                UsingStaticIp   = $_.usingStaticIp
+            $device = [Vlan]@{
+                Id          = $_.id
+                NetworkId   = $_.networkId
+                Name        = $_.name
+                ApplianceIp = $_.applianceIp
+                Subnet      = $_.subnet
             }
-
-            Write-Output $deviceUplink
+            Write-Output $device
         }
     }
     Catch{
