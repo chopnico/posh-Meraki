@@ -1,9 +1,10 @@
 # Load classes
-using module './Classes/Device.psm1'
-using module './Classes/DeviceUplink.psm1'
-using module './Classes/Network.psm1'
-using module './Classes/Organization.psm1'
-using module './Classes/Vlan.psm1'
+$classes = Get-ChildItem -Path $PSScriptRoot\Classes\*.ps1
+
+ForEach($class in $classes){
+    Write-Verbose "Importing classs $($class)"
+    . $class.FullName
+}
 
 # Read configuration from user's home folder
 # Windows C:\Users\<username>
